@@ -18,6 +18,10 @@
     body {
       background: #fff;
     }
+    b {
+      font-weight: bold;
+        color: red;
+    }
 
     .input-field input[type=date]:focus + label,
     .input-field input[type=text]:focus + label,
@@ -44,6 +48,11 @@
       <div class="section"></div>
 
       <h5 class="indigo-text">Please, login into your account</h5>
+        {% if error2 %}
+            <div class="b">
+            <b>Bad name or password!</b>
+            </div>
+        {% endif %}
       <div class="section"></div>
 
       <div class="container">
