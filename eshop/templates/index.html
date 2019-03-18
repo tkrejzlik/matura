@@ -13,8 +13,18 @@
       <a href="#" class="brand-logo">Eshop</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="login">Přihlásit se</a></li>
-        <li><a href="registrace">Registrace</a></li>
+          {% if logged %}
+              <li><span>{{username}}</span></li>
+              <li> <a class="waves-effect waves-teal btn-flat">Odhlásit</a></li>
+
+
+        {% else %}
+              <li><a href="login">Přihlásit se</a></li>
+              <li><a href="registrace">Registrace</a></li>
+          {% endif %}
+
+
+
 
       </ul>
     </div>

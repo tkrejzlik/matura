@@ -1,16 +1,16 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth import logout
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 from shop.models import User
 
 
 def index(request):
+
     return render(request, "index.html", {"users": User.objects.all()})
 
-
-def login(request):
-    return render(request, "login.html")
 
 def registrace(request):
     if request.method == "GET":
@@ -28,15 +28,18 @@ def registrace(request):
         return render(request, "registrace.html",{"error": "Tento uživatel již existuje!"})
 
 def login(request):
+    logged = False
     if request.method == "GET":
         return render(request, "login.html")
     elif request.method == "POST":
         password = request.POST.get("pass1", "")
         username = request.POST.get("username", "")
         if User.objects.filter(username=username, password=password):
-            request.session["username"] = username
-            return redirect("/")
-        return render(request, "login.html", {"error2": "Bad username or password!"})
+            logged = True
+            return render(request, "index.html",{'logged':logged,'username':username})
+        return render(request, "login.html", {"error2": "Špatný email nebo heslo!"})
+
+
 
 
 
