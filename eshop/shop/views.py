@@ -39,6 +39,12 @@ def login(request):
             return render(request, "index.html",{'logged':logged,'username':username})
         return render(request, "login.html", {"error2": "Špatný email nebo heslo!"})
 
+def logout(request):
+    logged = False
+    return render(request, "index.html", {'logged': logged})
+
+
+
 
 
 
