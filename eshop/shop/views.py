@@ -4,12 +4,12 @@ from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
 
 # Create your views here.
-from shop.models import User
+from shop.models import User,veci
 
 
 def index(request):
 
-    return render(request, "index.html", {"users": User.objects.all()})
+    return render(request, "index.html", {"users": User.objects.all(),"veci": veci.objects.all()})
 
 
 def registrace(request):

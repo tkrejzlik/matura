@@ -10,37 +10,63 @@
 <body>
 <nav class="blue">
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Eshop</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="left hide-on-med-and-down">
+          <li class="tab"><a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a></li>
+          <li class="tab"><a href="#test1">Ženy</a></li>
+          <li class="tab"><a class="active" href="#test2">Muži</a></li>
+          <li class="tab"><a href="#test4">Děti</a></li>
+
+
+      </ul>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
           {% if logged %}
               <li><span>{{username}}</span></li>
               <li> <span><a class="waves-effect waves-light btn" href="/logout">logout</a></span></li>
-
-
-
-        {% else %}
+          {% else %}
               <li><a href="login">Přihlásit se</a></li>
               <li><a href="registrace">Registrace</a></li>
           {% endif %}
-
-
-
-
       </ul>
-    </div>
-    <div class="blue">
-      <ul class="tabs tabs-transparent">
-        <li class="tab"><a href="#test1">Ženy</a></li>
-        <li class="tab"><a class="active" href="#test2">Muži</a></li>
-        <li class="tab"><a href="#test4">Děti</a></li>
-          <li class="tab"> <label><i class="material-icons">search</i></label></li>
-          <li class="tab"><input id="search" type="search" required></li>
 
-      </ul>
     </div>
+
 
   </nav>
+
+
+<div class="container">
+<div class="section">
+ <div class="row">
+     {% for vec in veci %}
+         <div class="col s12 m3">
+      <div class="card">
+        <div class="card-image">
+          <img src="images/{{vec.obrazek}}">
+          <span class="card-title">{{vec.name}}</span>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p>
+        </div>
+        <div class="card-action">
+          <a href="#">ujebat</a>
+        </div>
+      </div>
+    </div>
+
+     {% endfor %}
+
+
+
+
+    </div>
+
+      </div>
+    </div>
+
+
+
+
 
 
 </body>

@@ -21,3 +21,13 @@ class User(models.Model):
     def __str__(self):
         return str(self.username)
 
+
+class veci(models.Model):
+    name = models.CharField(max_length=30, default="")
+    cena = models.CharField(max_length=10, default="")
+    obrazek = models.ImageField(blank=True,null=True)
+
+    def __str__(self):
+        return str(self.name)
+
+
