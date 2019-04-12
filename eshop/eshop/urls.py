@@ -11,7 +11,14 @@ urlpatterns = [
     path('login', views.login, name="login"),
     path('registrace', views.registrace, name="registrace"),
     path('', views.index, name="index"),
+    path('index', views.index, name = "index"),
     path('logout', views.logout, name="logout"),
+    path('kola', views.kola, name="kola"),
+    path('lyze', views.lyze, name="lyze"),
+    path('brusle', views.brusle, name="lyze"),
+    path('buy', views.buy, name="buy"),
+
+
 ]
 
 

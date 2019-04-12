@@ -22,11 +22,9 @@
      {% csrf_token %}
     <div class="row">
         <div class="input-field col s12">
-          <input id="username" class="validate" name="username" >
+          <input id="username" type="text" class="validate" name="username" >
           <label for="username">username</label>
         </div>
-      </div>
-      <div class="row">
         <div class="input-field col s12">
           <input id="password" type="password" class="validate" name="pass1" >
           <label for="password">Password</label>
@@ -39,7 +37,7 @@
   </button>
         {% if error2 %}
             <div class="b">
-            <b>špatný email nebo heslo !</b>
+            <b>špatné jméno nebo heslo !</b>
             </div>
         {% endif %}
 
