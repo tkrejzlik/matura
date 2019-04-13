@@ -26,7 +26,7 @@ class veci(models.Model):
     name = models.CharField(max_length=30, default="")
     cena = models.CharField(max_length=10, default="")
     obrazek = models.ImageField(blank=True,null=True)
-    popis = models.CharField(max_length=200, default="")
+    popis = models.TextField(default="")
     typ = models.CharField(max_length=15,default="")
 
     def __str__(self):

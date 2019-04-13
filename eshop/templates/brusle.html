@@ -21,7 +21,8 @@
       </ul>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
           {% if user %}
-              <li><span>{{user}}</span></li>
+              <li> <i class="small material-icons"> person</i></li>
+              <b><li><span>{{user}}</span></li></b>
               <li> <span><a class="waves-effect waves-light btn" href="/logout">logout</a></span></li>
           {% else %}
               <li><a href="login">Přihlásit se</a></li>
