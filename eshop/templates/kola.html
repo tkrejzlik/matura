@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>kola</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -21,6 +21,7 @@
       </ul>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
           {% if user %}
+              <li> <i class="medium material-icons"><a href="/basket">shopping_cart</a></i></li>
               <li> <i class="small material-icons"> person</i></li>
               <b><li><span>{{user}}</span></li></b>
               <li> <span><a class="waves-effect waves-light btn" href="/logout">logout</a></span></li>
@@ -44,7 +45,7 @@
          <div class="col s11 m3">
       <div class="card">
         <div class="card-image">
-          <img src="images/{{vec.obrazek}}">
+          <img src="images/{{vec.obrazek}}" width="200" height="150">
           <span class="card-title">{{vec.name}}</span>
         </div>
         <div class="card-content">

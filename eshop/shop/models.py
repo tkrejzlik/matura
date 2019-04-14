@@ -24,12 +24,17 @@ class User(models.Model):
 
 class veci(models.Model):
     name = models.CharField(max_length=30, default="")
-    cena = models.CharField(max_length=10, default="")
-    obrazek = models.ImageField(blank=True,null=True)
+    cena = models.IntegerField(blank=True, null=True)
+    obrazek = models.ImageField(blank=True, null=True)
     popis = models.TextField(default="")
     typ = models.CharField(max_length=15,default="")
 
     def __str__(self):
         return str(self.name)
+
+class Items(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    item = models.ForeignKey(veci, on_delete=models.CASCADE)
+
 
 

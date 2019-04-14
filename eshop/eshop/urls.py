@@ -17,6 +17,8 @@ urlpatterns = [
     path('lyze', views.lyze, name="lyze"),
     path('brusle', views.brusle, name="lyze"),
     path('buy', views.buy, name="buy"),
+    path('basket', views.basket, name="basket"),
+    path('send', views.send, name="send"),
 
 
 ]

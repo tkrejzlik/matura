@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>buy</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
@@ -33,6 +33,7 @@
       </ul>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
           {% if user %}
+              <li> <i class="medium material-icons"><a href="/basket">shopping_cart</a></i></li>
               <li> <i class="small material-icons"> person</i></li>
               <b><li><span>{{user}}</span></li></b>
               <li> <span><a class="waves-effect waves-light btn" href="/logout">logout</a></span></li>
@@ -49,9 +50,8 @@
   </nav>
         <h3>{{item.name}}</h3>
 
- <img src="/images/{{item.obrazek}}">
+ <img src="/images/{{item.obrazek}}" width="1000px" height="500px">
             <div class="row">
-    <form class="col s12">
       <div class="row">
         <div class="input-field col s6">
             <b><h4>cena: {{item.cena}} kč</h4> </b>
@@ -60,14 +60,15 @@
 
         </div>
       </div>
-      {% if item.typ == "kolo"%}
+      {% if item.typ == "brusle"%}
       <div class="row">
      <div class="input-field col s12">
     <select>
       <option value="" disabled selected>Vyberte velikost</option>
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
+      <option value="1">35-37</option>
+      <option value="2">38-39</option>
+      <option value="3">40-42</option>
+        <option value="3">43-45</option>
     </select>
 
   </div>
@@ -80,23 +81,24 @@
         </div>
 
        <div class="row">
-        <div class="input-field col s12">
+        <form method="POST" action="/basket">
+            {% csrf_token %}
+            <div class="input-field col s12">
                 {% if user %}
-                  <button class="btn waves-effect waves-light" type="submit" name="action"><b>koupit</b>
-    <i class="material-icons right">send</i>
-  </button>
+                      <button class="btn waves-effect waves-light" type="submit"><b>přidat do košíku</b>
+                        <i class="material-icons right">send</i>
+                      </button>
+                {%endif%}
+
+            {% if not user %}
+                <button class="btn disabled" type="submit"><b>přidat do košíku</b></button>
+                <font color="red"><b>abys produkt mohl koupit, musíš se přihlásit</b></font>
+
             {%endif%}
-
-        {% if not user %}
-            <a class="btn disabled"><b>Koupit</b></a>
-            <font color="red"><b>abys produkt mohl koupit, musíš se přihlásit</b></font>
-
-        {%endif%}
-       </div>
-
+           </div>
+        </form>
       </div>
 
-    </form>
   </div>
 
 

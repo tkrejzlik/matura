@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
-    <title>brusle</title>
+    <title>basket</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -12,7 +13,7 @@
     <div class="nav-wrapper">
       <ul class="left hide-on-med-and-down">
           <li class="tab"><a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a></li>
-          <li class="tab"><a href="/"><i class="medium material-icons">home</i></a></li>
+           <li class="tab"><a href="/"><i class="medium material-icons">home</i></a></li>
           <li class="tab"><a href="kola">kola</a></li>
           <li class="tab"><a href="lyze">lyže</a></li>
           <li class="tab"><a href="brusle">brusle</a></li>
@@ -35,42 +36,35 @@
 
 
   </nav>
+<h3> Obsah košíku</h3>
+<hr>
+{% if items %}
+    {% for item in items %}
+
+        <h5>název produktu:</h5>
+        <font color="black"><b>{{ item.item.name }} </b></font>
+        <br>
+        <img src="images/{{ item.item.obrazek }}" width="200" height="150">
+        <h5>cena produktu:</h5>
+        <font color="black"><b>{{ item.item.cena }} kč </b></font>
+        <br>
+        <a href="/basket?action=delete&id={{ item.id }}"> <i class="medium material-icons">delete</i></a>
+        <hr>
+
+    {% endfor %}
 
 
-<div class="container">
-<div class="section">
-<div class="row">
-     {% for vec in veci %}
-         {% if vec.typ == "brusle"%}
-         <div class="col s11 m3">
-      <div class="card">
-        <div class="card-image">
-          <img src="images/{{vec.obrazek}}" width="200" height="150">
-          <span class="card-title">{{vec.name}}</span>
-        </div>
-        <div class="card-content">
-          <p>{{vec.popis}}</p>
-        </div>
-        <div class="card-action">
-          <a href="/buy?id={{vec.id}}">koupit</a>
-        </div>
-      </div>
-    </div>
-         {% endif %}
-     {% endfor %}
 
-
-</div>
-</div>
-    </div>
-
-
+    <br>
+    <font color="black"><b>cena celkem:{{ vysledna_cena }} kč </b></font>
+    <br>
+    <a class="waves-effect waves-light btn" href="/send">objednat</a>
+{% endif %}
+{% if not items %}
+    <font color="red"><b>Váš košík je prázdný</b></font>
+{% endif %}
 
 </body>
-
-
-
-
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
