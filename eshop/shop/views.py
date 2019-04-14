@@ -24,7 +24,6 @@ def registrace(request):
             if not User.objects.filter(username=username):
                 user = User(username=username, password=password,email=email)
                 user.save()
-                request.session["email"] = email
                 request.session["username"] = username
                 return redirect("/")
         return render(request, "registrace.html",{"error": "Tento uživatel již existuje!"})
@@ -41,7 +40,6 @@ def login(request):
         return render(request, "login.html", {"error2": "Špatné jméno nebo heslo!"})
 
 def logout(request):
-    del request.session["email"]
     del request.session["username"]
     return redirect("/")
 
@@ -88,7 +86,8 @@ def send(request):
     string = ""
     vysledna_cena = 0
     username = request.session.get("username")
-    email = request.session.get("email")
+    find = User.objects.get(username=username)
+    email = find.email
     user_items = Items.objects.filter(user=User.objects.get(username=username))
     string+= "Děkujeme za nákup v krejzlík eshop!!" + "\n" + "objednané produkty: " + "\n"
     for user_item in user_items:
